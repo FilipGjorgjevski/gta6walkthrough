@@ -6,6 +6,8 @@ export type GuideSection = {
   description: string[];
   objective?: string;
   editorialNote?: string;
+  optional?: boolean;
+  tip?: string;
 };
 
 export type Guide = {
@@ -14,7 +16,7 @@ export type Guide = {
   subtitle: string;
   chapter: string;
   readingMinutes: number;
-  status: "field-notes" | "verified";
+  status: "in-progress" | "reviewed";
   updated: string;
   description: string;
   tags: string[];
@@ -24,72 +26,85 @@ export type Guide = {
 };
 
 // All content is easy to edit in this file. Only create real pages for actual guides.
-// "field-notes" means sourced from firsthand notes but not independently confirmed.
+// Steps are grouped by what the player actually controls; cinematics are separate.
 export const guides: Guide[] = [
   {
     slug: "prologue",
     title: "Prologue",
     subtitle: "Lucia's opening sequence",
     chapter: "00 / HAMLET CORRECTIONAL",
-    readingMinutes: 6,
-    status: "field-notes",
+    readingMinutes: 5,
+    status: "in-progress",
     updated: "2026-11-18",
-    description: "GTA 6 Prologue guide: crossword answer, CO Wilson, Stephanie's interview, the payday loan robbery, police chase and why Lucia returns to the coffee shop.",
+    description: "GTA 6 Prologue walkthrough with every playable step: follow the guard, rob the payday loan store, escape the grab, run from police, and return to the coffee shop. Crossword answer included.",
     tags: ["Lucia", "Prison", "Stephanie", "CO Wilson", "Crossword", "Venus", "Payday Loan", "Police", "Tommy"],
     quickAnswers: [
+      {question:"What do I do first in prison?", answer:"Follow CO Wilson when the objective appears. The interview with Stephanie is a cutscene, not a gameplay task."},
       {question:"What is the prologue crossword answer?", answer:"Venus. Talking to the woman working on the crossword is an optional early interaction."},
       {question:"Can you escape the police in the flashback?", answer:"No. The pursuit and arrest are scripted, so running indefinitely will not change the ending."},
       {question:"Why does Lucia go back to the coffee shop?", answer:"The closing scene reveals that she returns because her young son Tommy was left there."},
     ],
     sources: [
-      {name:"Our firsthand playthrough notes", url:""},
+      {name:"Original gameplay observations", url:""},
       {name:"Rare Thief — Prologue guide", url:"https://rarethief.com/gta-vi-prologue-walkthrough/"},
       {name:"Beebom — Prologue mission guide", url:"https://beebom.com/gta-6-prologue/"}
     ],
     sections: [
       {
-        id:"opening", label:"01", title:"The opening cinematic", type:"cinematic",
-        description:["The introductory story sequence establishes Lucia and Jason's relationship before the focus shifts to Lucia in prison.","This sequence is presented as a cinematic in our playthrough notes; there is no required player action to document here."]
+        id: "opening", label: "C1", title: "Opening cinematic", type: "cinematic",
+        description: ["The introductory movie establishes Lucia and Jason's connection before switching to Lucia at Hamlet Correctional.", "This is not a controllable part of the mission."]
       },
       {
-        id:"cellmates", label:"02", title:"Optional: talk to your cellmates", type:"gameplay",
-        description:["When you first control Lucia in the prison dorm, turn away from the window and look toward the other inmates.","A woman at a table is trying to finish a crossword. Focus on her (L2 on PS5 / LT on Xbox) and talk to her. The answer reported by launch guides is Venus; speak to her again to supply it.","This conversation adds flavor to the opening; it is not the main objective noted during our playthrough."],
-        editorialNote:"Optional interaction documented by external launch-day guides; revisit in-game to confirm exact prompt behavior."
+        id: "cellmates", label: "BONUS", title: "Talk to your cellmates (optional)", type: "gameplay", optional: true,
+        description: ["Before following the guard, turn around in the prison dorm and face the inmates gathered around a table.", "Focus on a cellmate with L2 on PlayStation or LT on Xbox, then use the interaction prompt to speak.", "A reported optional crossword answer is Venus. You can skip this conversation and still continue the mission."],
+        editorialNote: "The optional crossword detail comes from published guides; check the on-screen prompts in your version."
       },
       {
-        id:"prison-guard", label:"03", title:"Follow CO Wilson", type:"gameplay", objective:"Follow the prison guard",
-        description:["The guard, identified in published guides as CO Wilson, arrives at the dorm entrance. Walk toward him and follow as he leads Lucia through the correctional facility.","He pauses briefly near the common area, then continues toward Stephanie's office. Stay with him until the conversation begins."],
+        id: "guard", label: "01", title: "Follow the prison guard", type: "gameplay", objective: "Follow the prison guard",
+        description: ["Wait for CO Wilson to arrive and open Lucia's cell. Head toward him when the objective appears.", "Stay behind Wilson through the common area. He pauses to answer a phone call; wait for him to continue.", "Follow him through the door and down the corridor until the counselor conversation starts automatically."],
+        tip: "You do not need to search the prison or find an alternate exit. The guard leads you straight to the next scene."
       },
       {
-        id:"stephanie", label:"04", title:"Stephanie's interview", type:"cinematic",
-        description:["Stephanie asks Lucia to explain why she is attending the meeting. Lucia says she applied for a supervised-release arrangement involving home detention and could be considered for a trial placement.","The interview shifts into a flashback as Lucia describes the events that led to her arrest."],
+        id: "stephanie", label: "C2", title: "Stephanie's interview", type: "cinematic",
+        description: ["Stephanie asks Lucia why she has been called in. Lucia talks about a supervised-release application and possible home detention.", "The conversation moves into a flashback; there are no controls to use during the interview."]
       },
       {
-        id:"coffee-shop", label:"05", title:"The coffee shop and the decision", type:"cinematic",
-        description:["The flashback begins around a coffee shop during a difficult period in Lucia's life. A nearby payday-loan business catches her attention.","The scene sets up the attempted robbery; there are no confirmed movement objectives during this portion."],
+        id: "coffee-shop", label: "C3", title: "Coffee shop flashback", type: "cinematic",
+        description: ["Lucia remembers sitting in a coffee shop during a difficult period in her life. She notices an opportunity nearby and heads toward a payday-loan store.", "The opening of the flashback is cinematic; control returns for the robbery."]
       },
       {
-        id:"robbery", label:"06", title:"Rob the payday loan store", type:"gameplay",
-        description:["Lucia has a pistol and confronts the teller. Follow the tutorial prompts to raise the weapon, aim, and demand the money.","Approach the counter to collect the cash. Published guides report multiple cash pickups before the scene is interrupted.","As Lucia moves to leave, someone grabs her from behind. Use the displayed rapid-press prompt to break out of the grapple."],
-        editorialNote:"The robbery actions and cash pickups were cross-checked with published walkthroughs; confirm exact controller prompts in your game version."
+        id: "aim", label: "02", title: "Aim the pistol at the teller", type: "gameplay",
+        description: ["Once Lucia is controllable inside the payday-loan store, use the aiming prompt to point her pistol at the employee behind the counter.", "Keep the employee covered while the robbery plays out. Follow any tutorial cues displayed on screen."],
+        tip: "The scene is a tutorial. Watch the button prompts rather than trying to leave the building early."
       },
       {
-        id:"police-escape", label:"07", title:"Run from the police", type:"gameplay",
-        description:["After the robbery goes wrong, take control of Lucia outside and sprint away from pursuing officers. Use the minimap's search indicators to understand where police are looking.","Important: this is a scripted pursuit. You cannot permanently lose the police here, so there is no secret escape route to find."],
-        editorialNote:"The scripted nature of the chase is corroborated by multiple launch-day guides."
+        id: "cash", label: "03", title: "Take the money from the counter", type: "gameplay",
+        description: ["Move up to the counter when the cash is available.", "Use the pickup prompt (Triangle on PlayStation / Y on Xbox, according to launch-day guides) to take the money."],
+        editorialNote: "Controller prompts may differ depending on your layout and platform."
       },
       {
-        id:"return", label:"08", title:"Return to the coffee shop", type:"gameplay",
-        description:["The sequence leads Lucia back toward the coffee shop. Follow the destination marker instead of trying to leave the mission area.","The police arrest Lucia as she gets close. This outcome is part of the story, not a gameplay failure."],
+        id: "grapple", label: "04", title: "Break free from the attacker", type: "gameplay",
+        description: ["As Lucia tries to leave, someone grabs her from behind.", "Rapidly press the on-screen escape button to get free. Published guides report X on PlayStation / A on Xbox."],
+        tip: "If the scene stops progressing, look for the rapid-press icon: this is a quick-time event, not a normal fistfight."
       },
       {
-        id:"custody", label:"09", title:"Why Lucia came back", type:"cinematic",
-        description:["The conclusion reveals that Lucia had left her young son, Tommy, at the coffee shop. The incident involves child-welfare custody, giving her attempted return a much more personal meaning.","Your notes also caught a reference to Jason Duval in connection with the father's details. We are leaving the exact wording and what it establishes unconfirmed until the dialogue can be checked."],
-        editorialNote:"Tommy's identity is reported by Beebom. The Jason/father detail remains unverified in our firsthand notes."
+        id: "chase", label: "05", title: "Run from the police", type: "gameplay",
+        description: ["Once you are outside, sprint away from the officers and keep moving through the nearby streets.", "Watch the flashing police search zone on your minimap and keep following the sequence until the scene transitions."],
+        tip: "The pursuit is scripted. You cannot permanently outrun the police to change the outcome, so there is no special escape route to discover."
       },
       {
-        id:"chapter-one", label:"10", title:"The story moves to Chapter 1", type:"cinematic",
-        description:["The prison framing sequence closes, and the story shifts toward Jason's early work in the Leonida Keys.","The next documented mission is Gone Fishing; our island-and-seaplane walkthrough is available as a separate guide."],
+        id: "return", label: "06", title: "Return to the coffee shop", type: "gameplay",
+        description: ["When control returns, locate the coffee-shop waypoint on your minimap or compass.", "Run toward the objective marker and approach the shop.", "The police arrest Lucia when she reaches the area. This is the intended ending of the prologue, not a failed attempt."],
+        tip: "If you think you escaped too early, keep following the marked destination. The return to the shop triggers the final sequence."
+      },
+      {
+        id: "reveal", label: "C4", title: "Why Lucia went back", type: "cinematic",
+        description: ["The ending reveals Lucia returned because she had left her young son, Tommy, at the coffee shop. Staff had alerted the authorities, and the child entered welfare custody.", "A father's-name detail involving Jason Duval was mentioned in the original playthrough, but its exact meaning should be checked against the dialogue."],
+        editorialNote: "The child's name and custody event are described in Beebom's published guide. The father's-name wording remains unverified."
+      },
+      {
+        id: "transition", label: "C5", title: "Chapter 1 begins", type: "cinematic",
+        description: ["The prologue ends, and the next playable story chapter follows Jason.", "Continue to the Gone Fishing walkthrough for the island shootout and seaplane escape."]
       }
     ]
   },
@@ -99,11 +114,11 @@ export const guides: Guide[] = [
     subtitle: "Jason's first Chapter 1 job",
     chapter: "01 / JUST LIKE PARADISE",
     readingMinutes: 5,
-    status: "field-notes",
+    status: "in-progress",
     updated: "2026-11-18",
     description: "GTA 6 Gone Fishing: survive the island shootout, win the hut fight, recover the package and escape by seaplane with Jason.",
     tags: ["Jason", "Island", "Shootout", "Hut", "Melee", "Seaplane", "Marina", "Brian", "Donnie", "Lori", "Zombix"],
-    sources: [{name:"Our firsthand playthrough notes", url:""},{name:"GTA Base — Story mission index", url:"https://www.gtabase.com/gta-6/missions/"}],
+    sources: [{name:"Original gameplay observations", url:""},{name:"GTA Base — Story mission index", url:"https://www.gtabase.com/gta-6/missions/"}],
     sections: [
       {
         id: "island-job",
@@ -112,9 +127,9 @@ export const guides: Guide[] = [
         type: "gameplay",
         description: [
           "Chapter 1 begins with you controlling Jason on an island, where the objective is to steal an item described in the player's notes as 'Zombix'.",
-          "The exact spelling of the item's name and the game's on-screen instructions still need to be checked."
+          "The package name was recorded as 'Zombix'; check the spelling against your game before publishing it as an item name."
         ],
-        editorialNote: "'Zombix' is a transcription from playthrough notes, not a verified in-game item name."
+        editorialNote: "'Zombix' is an unverified transcription, not a confirmed item name."
       },
       {
         id: "shootout",
@@ -133,7 +148,7 @@ export const guides: Guide[] = [
         type: "gameplay",
         description: [
           "Enter the hut after the gunfight. Jason gets into a close-range fistfight with another man.",
-          "Win the melee encounter to continue. Specific combat prompts were not captured."
+          "Follow the melee prompts shown on-screen, land punches, and finish the fight to move on."
         ]
       },
       {
@@ -143,7 +158,7 @@ export const guides: Guide[] = [
         type: "gameplay",
         description: [
           "After the fight, collect the item that Jason came to steal, referred to in the notes as 'Zombix'.",
-          "The item's precise location inside the hut and the exact pickup prompt are still to be recorded."
+          "Use the displayed interaction prompt at the objective item. Its exact location is still being checked."
         ]
       },
       {

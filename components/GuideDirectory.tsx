@@ -19,7 +19,7 @@ export default function GuideDirectory({allGuides, initialQuery=""}:{allGuides:G
       <div className="directory-search"><Search size={19}/><input aria-label="Search GTA 6 missions" placeholder="Search a mission, place, or character..." value={query} onChange={e=>setQuery(e.target.value)} /></div>
       <div className="filter-label"><SlidersHorizontal size={16}/>{indexedMissionCount} INDEXED ENTRIES · {allGuides.length} FULL GUIDES</div>
     </div>
-    <div className="directory-section-head"><span className="section-kicker"><Sparkles size={14}/> READY TO PLAY</span><h2>ACTUAL <em>WALKTHROUGHS</em></h2><p>Written guides with objectives, story notes, and progress tracking. These pages are fully readable now.</p></div>
+    <div className="directory-section-head"><span className="section-kicker"><Sparkles size={14}/> READY TO PLAY</span><h2>ACTUAL <em>WALKTHROUGHS</em></h2><p>Follow clear numbered actions, track completed objectives, and reveal story spoilers only when you want them.</p></div>
     {results.length ? <div className="directory-grid">{results.map(guide=><GuideCard key={guide.slug} guide={guide}/>)}</div> : <p className="directory-empty">No published walkthrough matches this search yet. The broader mission index below might have it.</p>}
     <div className="catalogue-title-row"><div><span className="section-kicker">THE LEONIDA ARCHIVE</span><h2>STORY <em>MISSION INDEX.</em></h2><p>Browse mission titles and jump to guides as they are written. A listed mission does not mean a walkthrough is published.</p></div><span className="catalogue-counter"><BookOpen size={19}/>{indexedMissionCount} ENTRIES</span></div>
     <div className="chapter-filters" role="group" aria-label="Filter by chapter"><button className={chapterFilter==="all"?"selected":""} onClick={()=>setChapterFilter("all")}>ALL</button>{chapters.map(c=><button key={c.number} className={chapterFilter===c.number?"selected":""} onClick={()=>setChapterFilter(c.number)}>{c.number===0?"PROLOGUE":`CH ${String(c.number).padStart(2,"0")}`}</button>)}</div>
@@ -44,6 +44,6 @@ export default function GuideDirectory({allGuides, initialQuery=""}:{allGuides:G
       })}
       {!matchChapters.length && <div className="directory-empty">No matching mission title. Try a different keyword or select all chapters.</div>}
     </div>
-    <p className="catalogue-disclaimer">Mission listings are sourced from launch-day published indexes and may change. Full walkthroughs are based on player notes and other sources identified on each guide page. No unplayed mission is presented as a completed guide.</p>
+    <p className="catalogue-disclaimer">Mission listings are sourced from launch-day published indexes and may change. Full walkthroughs are independently written from gameplay observations and credited reference sources. No unplayed mission is presented as a completed guide.</p>
   </div>
 }

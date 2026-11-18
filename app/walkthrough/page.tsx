@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function WalkthroughIndex() {
   return <>
-    <section className="page-intro shell"><div className="breadcrumbs"><a href="/">HOME</a><span>/</span><strong>WALKTHROUGHS</strong></div><div className="page-intro-split"><div><span className="section-kicker"><Compass size={15}/> THE LEONIDA FIELD GUIDE</span><h1>THE <span className="gradient-text">MISSION</span><br/>ARCHIVE.</h1><p>Five chapters. One road through Leonida. Browse the mission index, then open the guides we have actually documented.</p></div><div className="page-intro-stat"><BookOpen size={23}/><strong>{indexedMissionCount}</strong><span>INDEXED ENTRIES</span></div></div></section>
-    <section className="directory-section shell"><GuideDirectory allGuides={guides}/><div className="directory-hint">MORE FIELD GUIDES APPEAR AS OBJECTIVES ARE DOCUMENTED <ArrowUpRight size={15}/></div></section>
+    <section className="page-intro shell"><div className="breadcrumbs"><a href="/">HOME</a><span>/</span><strong>WALKTHROUGHS</strong></div><div className="page-intro-split"><div><span className="section-kicker"><Compass size={15}/> COMPLETE MISSIONS, STEP BY STEP</span><h1>THE <span className="gradient-text">MISSION</span><br/>ARCHIVE.</h1><p>Five chapters. One road through Leonida. Browse the mission index, then open the guides we have actually documented.</p></div><div className="page-intro-stat"><BookOpen size={23}/><strong>{indexedMissionCount}</strong><span>INDEXED ENTRIES</span></div></div></section>
+    <section className="directory-section shell"><GuideDirectory allGuides={guides}/><div className="directory-hint">NEW STEP-BY-STEP WALKTHROUGHS ARE ADDED AS MISSIONS ARE VERIFIED <ArrowUpRight size={15}/></div></section>
   </>;
 }
