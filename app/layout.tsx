@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next"
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,5 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
-  return <html lang="en"><Analytics/><body><Header/><main>{children}</main><Footer/></body></html>;
+  return <html lang="en"><body><Suspense fallback={null}>
+  <Header />
+</Suspense><main>{children}</main><Footer/><Suspense fallback={null}>
+  <Analytics />
+</Suspense></body></html>;
 }
