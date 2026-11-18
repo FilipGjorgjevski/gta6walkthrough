@@ -8,7 +8,6 @@ import { siteUrl } from "@/lib/site";
 
 type Props = {params: Promise<{slug: string}>};
 export function generateStaticParams() { return guides.map(guide=>({slug:guide.slug})); }
-export const dynamicParams = false;
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {
   const guide=getGuide((await params).slug);
