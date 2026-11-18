@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Compass, Crosshair, Footprints, Route, Search, ShieldCheck, Sparkles, MoveUpRight } from "lucide-react";
 import GuideCard from "@/components/GuideCard";
 import { guides } from "@/lib/guides";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   return <>
