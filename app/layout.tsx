@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  icons: { icon: "/favicon.svg" },
-  title: { default: `${siteName} — GTA VI Walkthroughs & Field Notes`, template: `%s | ${siteName}` },
+  icons: {icon:"/favicon.svg"},
+  title: {default:`${siteName} — GTA 6 Walkthroughs & Mission Guide`,template:`%s | ${siteName}`},
   description: siteDescription,
   applicationName: siteName,
-  openGraph: { type: "website", locale: "en_US", siteName, title: `${siteName} — GTA VI Field Guide`, description: siteDescription, images: [{url: "/og.png", width: 1200, height: 630, alt: "Vice Atlas — GTA VI field guide"}] },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
-  robots: { index: true, follow: true },
-   verification: {
-    google: "googlea89d73d57ef2ae70",
-  },
+  openGraph: {type:"website",locale:"en_US",siteName,title:`${siteName} — GTA 6 Field Guide`,description:siteDescription,images:[{url:"/og.png",width:1200,height:630,alt:"VICE ATLAS — GTA 6 field guide"}]},
+  twitter: {card:"summary_large_image",images:["/og.png"]},
+  robots: {index:true,follow:true},
+  // Replace with the exact verification token from Search Console's HTML tag method.
+  verification: {google:"googlea89d73d57ef2ae70"}
 };
-
-export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
-  return <html lang="en"><body><Suspense fallback={null}>
-  <Header />
-</Suspense><main>{children}</main><Footer/><Suspense fallback={null}>
-  <Analytics />
-</Suspense></body></html>;
+export default function RootLayout({children}:Readonly<{children:React.ReactNode}>) {
+  return <html lang="en"><body><Header/><main>{children}</main><Footer/><Suspense fallback={null}><Analytics/></Suspense></body></html>;
 }

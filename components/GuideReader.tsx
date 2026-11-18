@@ -25,6 +25,10 @@ export default function GuideReader({guide}: {guide: Guide}) {
   return (
     <div className="reader-grid">
       <div className="reader-main">
+        {guide.quickAnswers?.length ? <div className="quick-answer-panel">
+          <div className="quick-answer-heading"><span className="section-kicker">FAST ANSWERS</span><h2>GET UNSTUCK.</h2></div>
+          <div className="quick-answer-grid">{guide.quickAnswers.map(answer=><div className="quick-answer" key={answer.question}><h3>{answer.question}</h3><p>{answer.answer}</p></div>)}</div>
+        </div> : null}
         <div className="reader-toolbar">
           <span><Info size={15}/> Field notes in progress · Some dialogue needs verification.</span>
           <button className="story-toggle" onClick={()=>setShowStory(!showStory)}>{showStory?<EyeOff size={15}/>:<Eye size={15}/>} {showStory?"Hide story spoilers":"Show story spoilers"}</button>
@@ -47,6 +51,7 @@ export default function GuideReader({guide}: {guide: Guide}) {
             </section>;
           })}
         </div>
+        {guide.sources?.length ? <div className="guide-sources"><h2>Sources &amp; verification</h2><p>Our guide uses original playthrough notes, with supplemental factual checks credited here. Wording and walkthrough explanations are written for VICE ATLAS.</p><ul>{guide.sources.map(source=><li key={source.name}>{source.url?<a href={source.url} target="_blank" rel="noopener noreferrer">{source.name} ↗</a>:source.name}</li>)}</ul></div>:null}
       </div>
       <aside className="reader-aside">
         <div className="sticky-panel">

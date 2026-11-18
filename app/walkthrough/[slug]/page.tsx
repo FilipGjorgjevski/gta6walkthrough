@@ -40,6 +40,6 @@ export default async function GuidePage({params}: Props) {
       <h1>GTA 6 <span className="gradient-text">{guide.title.toUpperCase()}</span><br/>WALKTHROUGH</h1><p>{guide.description}</p>
       <div className="article-stats"><div><Footprints size={19}/><strong>{gameSteps}</strong><span>PLAYABLE SEQUENCES</span></div><div><Clapperboard size={19}/><strong>{scenes}</strong><span>STORY SEQUENCES</span></div><div><ShieldCheck size={19}/><strong>WIP</strong><span>EDITORIAL STATUS</span></div></div>
     </div></section>
-    <div className="shell reader-container"><GuideReader guide={guide}/><div className="article-end"><Link href="/walkthrough"><ArrowLeft size={17}/> All walkthroughs</Link><span>MORE MISSIONS COMING SOON <ArrowUpRight size={16}/></span></div></div>
+    <div className="shell reader-container"><GuideReader guide={guide}/><div className="article-end"><Link href="/walkthrough"><ArrowLeft size={17}/> All walkthroughs</Link><span>{guide.slug === "prologue" ? <Link href="/walkthrough/chapter-1">NEXT: GONE FISHING <ArrowUpRight size={16}/></Link> : <Link href="/walkthrough/prologue">PREVIOUS: PROLOGUE <ArrowUpRight size={16}/></Link>}</span></div></div>
   </>;
 }

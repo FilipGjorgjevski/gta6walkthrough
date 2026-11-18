@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Illustrated neon Vice City skyline with sunset and palm trees">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#16142f"/><stop offset=".29" stop-color="#452e69"/><stop offset=".62" stop-color="#9a477d"/><stop offset=".81" stop-color="#f28a7d"/><stop offset="1" stop-color="#482f63"/></linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe2a2"/><stop offset=".55" stop-color="#ffb88c"/><stop offset="1" stop-color="#f26f8b"/></linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#562f71"/><stop offset="1" stop-color="#10172c"/></linearGradient>
+    <linearGradient id="darken" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#101622" stop-opacity=".92"/><stop offset=".42" stop-color="#131629" stop-opacity=".52"/><stop offset=".8" stop-color="#0d1227" stop-opacity=".04"/><stop offset="1" stop-color="#101626" stop-opacity=".22"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="28"/></filter>
+    <pattern id="windows" width="19" height="19" patternUnits="userSpaceOnUse"><rect x="8" y="7" width="3" height="6" fill="#e5a8b2" opacity=".5"/></pattern>
+    <pattern id="stars" width="90" height="100" patternUnits="userSpaceOnUse"><circle cx="26" cy="18" r="1" fill="#edd3ff" opacity=".5"/><circle cx="61" cy="68" r=".9" fill="#bcdfff" opacity=".25"/></pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="480" fill="url(#stars)" opacity=".55"/>
+  <circle cx="1149" cy="402" r="213" fill="#ff9ca3" opacity=".6" filter="url(#glow)"/>
+  <circle cx="1149" cy="402" r="174" fill="url(#sun)"/>
+  <g stroke="#d95581" stroke-width="10" opacity=".62"><path d="M977 452h345"/><path d="M981 475h339"/><path d="M997 499h309"/><path d="M1017 525h265"/><path d="M1040 550h224"/></g>
+  <path d="M0 580 L1600 580 L1600 900 L0 900Z" fill="url(#water)"/>
+  <g fill="none" stroke="#f18ead" stroke-opacity=".32" stroke-width="3"><path d="M800 635h390m-250 31h430m-500 35h375m-200 52h555m-380 47h390"/></g>
+  <g fill="#16152f"><path d="M610 595v-128h56v128h14V410h60v185h17V354h94v241h12V431h46v164h23V387h53v208h21V458h64v137h14V332h66v263h19V405h74v190h17V466h40v129h16V423h68v172h21V375h48v220h21V441h39v154h47V507h61v88h25V469h49v126h31V595Z"/></g>
+  <g opacity=".63"><path d="M610 595v-128h56v128h14V410h60v185h17V354h94v241h12V431h46v164h23V387h53v208h21V458h64v137h14V332h66v263h19V405h74v190h17V466h40v129h16V423h68v172h21V375h48v220h21V441h39v154h47V507h61v88h25V469h49v126h31V595Z" fill="url(#windows)"/></g>
+  <path d="M0 599h1600v27H0z" fill="#1b1936"/><path d="M0 618h1600v3H0z" fill="#61d7d4" opacity=".68"/>
+  <g fill="#0f1b2c" stroke="#101727" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M126 913Q149 690 118 410" stroke-width="27" fill="none"/>
+    <path d="M112 421Q23 348-48 374 Q41 383 112 434Z"/><path d="M111 419Q52 291-18 267Q38 336 114 434Z"/><path d="M116 417Q119 303 67 244Q94 333 121 420Z"/><path d="M118 417Q177 294 248 267Q160 353 120 433Z"/><path d="M118 417Q227 360 300 385Q204 381 114 435Z"/><path d="M119 421Q192 418 243 501Q178 470 119 436Z"/><path d="M110 424Q30 432-23 501Q50 469 114 442Z"/>
+    <path d="M1555 905 Q1480 655 1502 437" stroke-width="24" fill="none"/>
+    <path d="M1501 447Q1390 367 1336 402Q1420 403 1505 456Z"/><path d="M1501 448Q1436 321 1360 294Q1431 378 1507 459Z"/><path d="M1500 446Q1505 340 1454 264Q1482 373 1509 449Z"/><path d="M1501 446Q1560 317 1636 311Q1551 386 1504 458Z"/><path d="M1502 449Q1569 421 1642 466Q1542 447 1503 461Z"/><path d="M1503 453Q1563 483 1601 557Q1534 517 1498 461Z"/>
+  </g>
+  <g fill="#f7c7ce" opacity=".54"><path d="M904 181l17-7-13 9 12 0-17 4"/><path d="M970 163l13-5-8 7 11 0-16 3"/></g>
+  <rect width="1600" height="900" fill="url(#darken)"/>
+</svg>
