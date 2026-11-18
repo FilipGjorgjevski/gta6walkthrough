@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   openGraph: { type: "website", locale: "en_US", siteName, title: `${siteName} — GTA VI Field Guide`, description: siteDescription, images: [{url: "/og.png", width: 1200, height: 630, alt: "Vice Atlas — GTA VI field guide"}] },
   twitter: { card: "summary_large_image", images: ["/og.png"] },
   robots: { index: true, follow: true },
+   verification: {
+    google: "googlea89d73d57ef2ae70",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
