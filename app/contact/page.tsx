@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
+export const metadata: Metadata={title:"Contact",description:"Contact Vice Atlas about corrections or editorial questions.",alternates:{canonical:"/contact"},robots:{index:false,follow:true}};
+export default function Contact(){const email=process.env.NEXT_PUBLIC_CONTACT_EMAIL;return <div className="shell simple-page"><div className="breadcrumbs"><Link href="/">HOME</Link><span>/</span><strong>CONTACT</strong></div><span className="section-kicker">REACH THE EDITOR</span><h1>SPOTTED <span className="gradient-text">SOMETHING?</span></h1><p className="simple-lede">Corrections, overlooked objectives, and first-hand tips help make this guide better.</p><div className="contact-box"><Mail size={28}/><h2>Send us a note</h2>{email?<a className="button button-primary" href={`mailto:${email}`}>{email} <ArrowUpRight size={17}/></a>:<p>Contact details have not been configured yet. Site owner: set <code>NEXT_PUBLIC_CONTACT_EMAIL</code> in Vercel's environment variables before public launch.</p>}</div></div>}
