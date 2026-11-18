@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
       <div className="shell footer-bottom">
         <p>Independent fan-made reference. Not affiliated with Rockstar Games or Take-Two Interactive. Grand Theft Auto is a trademark of its respective owners.</p>
-        <span>BUILT FOR THE CURIOUS. © {new Date().getFullYear()} VICE ATLAS.</span>
+        <span>BUILT FOR THE CURIOUS. © 2026 VICE ATLAS.</span>
       </div>
     </footer>
   );
